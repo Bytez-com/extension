@@ -16,36 +16,12 @@
   "permissions": ["tabs"],
   "update_url": "https://clients2.google.com/service/update2/crx",
   "version": "0.2",
-  "icons": [
-    {
-      "src": "/rocket-circle-64.png",
-      "type": "image/png",
-      "sizes": "64x64"
-    },
-    {
-      "src": "/rocket-circle-125.png",
-      "type": "image/png",
-      "sizes": "125x125"
-    },
-    {
-      "src": "/rocket-circle-192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "/rocket-circle-250.png",
-      "type": "image/png",
-      "sizes": "250x250"
-    },
-    {
-      "src": "/rocket-circle-512.png",
-      "type": "image/png",
-      "sizes": "512x512"
-    },
-    {
-      "src": "/rocket-circle-purple.png",
-      "type": "image/png",
-      "sizes": "750x750"
-    }
-  ]
+  "icons": {
+    "64": "rocket-circle-64.png",
+    "125": "rocket-circle-125.png",
+    "192": "rocket-circle-192.png",
+    "250": "rocket-circle-250.png",
+    "512": "rocket-circle-512.png",
+    "750": "rocket-circle-purple.png"
+  }
 }

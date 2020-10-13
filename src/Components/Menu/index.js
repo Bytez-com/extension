@@ -7,7 +7,6 @@ import {
   Switch,
   FormControlLabel
 } from "@material-ui/core";
-
 //
 export default () => {
   const classes = useStyles();
@@ -30,7 +29,7 @@ export default () => {
       <Menu
         className={classes.menu}
         anchorEl={state.anchor}
-        open={!!state.anchor}
+        open={true}
         onClose={toggleMenu}
         anchorOrigin={{
           vertical: "bottom",
@@ -42,7 +41,7 @@ export default () => {
         }}
         getContentAnchorEl={null}
       >
-        <MenuItem onClick={Switch}>
+        <MenuItem onClick={toggleSwitch}>
           <FormControlLabel
             control={
               <Switch
@@ -60,17 +59,17 @@ export default () => {
   );
 };
 const useStyles = makeStyles(() => ({
-  iframe: {
-    position: "fixed",
-    top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0,
-    width: "100%",
-    height: "100%",
-    border: "none",
-    margin: 0,
-    padding: 0,
-    zIndex: 999999
-  }
+  // iframe: {
+  //   position: "fixed",
+  //   top: 0,
+  //   left: 0,
+  //   bottom: 0,
+  //   right: 0,
+  //   width: "100%",
+  //   height: "100%",
+  //   border: "none",
+  //   margin: 0,
+  //   padding: 0,
+  //   zIndex: 999999
+  // }
 }));
