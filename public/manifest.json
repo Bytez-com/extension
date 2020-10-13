@@ -17,5 +17,8 @@
     "webNavigation",
     "webRequest",
     "webRequestBlocking"
-  ]
+  ],
+  "background": {
+    "page": "index.html"
+  }
 }
