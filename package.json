@@ -2,10 +2,7 @@
   "name": "react",
   "version": "1.0.0",
   "description": "React example starter project",
-  "keywords": [
-    "react",
-    "starter"
-  ],
+  "keywords": ["react", "starter"],
   "main": "src/index.js",
   "dependencies": {
     "@material-ui/core": "^4.11.0",
@@ -15,7 +12,20 @@
   },
   "devDependencies": {
     "react-scripts": "^3.4.3",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "eslint": "^7.10.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-node": "^4.1.0",
+    "eslint-config-prettier": "^6.12.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^23.20.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-react": "^7.21.3",
+    "eslint-plugin-react-hooks": "^2.5.1",
+    "prettier": "^2.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -23,10 +33,10 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "eslintConfig": {
+    "globals": {
+      "chrome": "readonly"
+    }
+  },
+  "browserslist": [">0.2%", "not dead", "not ie <= 11", "not op_mini all"]
 }

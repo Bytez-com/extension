@@ -12,12 +12,10 @@
   },
   "content_security_policy": "script-src 'self' 'sha256-Pj1OwIVN/JoKvNtUHI0jwMu0CiIn5+nml4Bl0zOzzp0='",
   "permissions": [
-    "fileBrowserHandler",
-    "webRequest",
-    "webRequestBlocking",
-    "\u003Call_urls>",
+    "storage",
     "tabs",
     "webNavigation",
-    "storage"
+    "webRequest",
+    "webRequestBlocking"
   ]
 }

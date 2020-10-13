@@ -1,0 +1,62 @@
+{
+  "env": {
+    "es6": true,
+    "node": true,
+    "browser": false,
+    "commonjs": true,
+    "jest": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2020
+  },
+  "plugins": ["promise", "prettier"],
+  "globals": {
+    "chrome": "readonly"
+  },
+  "extends": [
+    "plugin:node/recommended",
+    "eslint:recommended",
+    "airbnb",
+    "plugin:prettier/recommended"
+  ],
+  "rules": {
+    "no-nested-ternary": "off",
+    "no-underscore-dangle": "off",
+    "no-console": "off",
+    "global-require": "off",
+    "no-unused-vars": "warn",
+    "guard-for-in": "off",
+    "no-async-promise-executor": "off",
+    "camelcase": "off",
+    "no-param-reassign": "off",
+    "no-continue": "off",
+    "block-scoped-var": "off",
+    "no-var": "off",
+    "no-await-in-loop": "off",
+    "vars-on-top": "off",
+    "no-restricted-syntax": "off",
+    "no-use-before-define": "off",
+    "consistent-return": "off",
+    "func-names": "off",
+    "max-len": [
+      "warn",
+      {
+        "code": 80,
+        "tabWidth": 2
+      }
+    ],
+    "no-plusplus": "off"
+  },
+  "overrides": [
+    {
+      "files": "**/__tests__/*.js",
+      "rules": {
+        "max-len": 0,
+        "import/no-dynamic-require": 0,
+        "import/no-extraneous-dependencies": 0,
+        "node/no-unpublished-require": 0,
+        "node/no-missing-require": 0
+      }
+    }
+  ]
+}
