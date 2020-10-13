@@ -1,0 +1,51 @@
+{
+  "author": "Bytez.io",
+  "browser_action": {
+    "default_popup": "index.html",
+    "default_title": "Open the popup"
+  },
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAgqIXcY98b6ka7v7eAOywETf+sG8J5g/c8+lXn7oPywyndBwoaAwlP4Hxu6juLRzGFKgkK5yKVQpmf/0AVZLVdBRSUKFs3BTV5LnW38MjbdoDnw6JK1eOmC9yEIN+DUuO6QaEnPOnDUNRFuNzXzftf4wAbWjp+3gMo7w+C1J4hfEDa7SpNEVY0wWe3Z7F7dCJNNM67PSyDdgXDUoXRuJdUKpio43a+hq7qJoy4DhIC93WO/5M45Tx99Fxn4wfaujlBJJrXPIAA+hFrSEXPpGzwKPbdxDGYO5m5lZZsbhDx583UOI39H0yROvrX+MRmgUDCXQBSQLueZmNfg6d1KRAAQIDAQAB",
+  "manifest_version": 2,
+  "name": "Bytez",
+  "omnibox": {
+    "keyword": "aaron"
+  },
+  "permissions": ["tabs"],
+  "update_url": "https://clients2.google.com/service/update2/crx",
+  "version": "0.2",
+  "icons": [
+    {
+      "src": "/rocket-circle-64.png",
+      "type": "image/png",
+      "sizes": "64x64"
+    },
+    {
+      "src": "/rocket-circle-125.png",
+      "type": "image/png",
+      "sizes": "125x125"
+    },
+    {
+      "src": "/rocket-circle-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/rocket-circle-250.png",
+      "type": "image/png",
+      "sizes": "250x250"
+    },
+    {
+      "src": "/rocket-circle-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "/rocket-circle-purple.png",
+      "type": "image/png",
+      "sizes": "750x750"
+    }
+  ]
+}
