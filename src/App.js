@@ -1,15 +1,17 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import Menu from "./Components/Menu";
 //
 export default () => {
   const classes = useStyles();
   //
   return (
-    <iframe
-      title="window"
-      src="https://bytez.com/home"
-      className={classes.iframe}
-    />
+    <Menu />
+    // <iframe
+    //   title="window"
+    //   src="https://bytez.com/home"
+    //   className={classes.iframe}
+    // />
   );
 };
 const useStyles = makeStyles(() => ({
