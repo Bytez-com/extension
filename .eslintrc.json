@@ -1,25 +1,27 @@
 {
   "env": {
     "es6": true,
-    "node": true,
-    "browser": false,
-    "commonjs": true,
+    "node": false,
+    "browser": true,
     "jest": true
   },
   "parserOptions": {
     "ecmaVersion": 2020
   },
-  "plugins": ["promise", "prettier"],
+  "plugins": [
+    "promise",
+    "prettier"
+  ],
   "globals": {
     "chrome": "readonly"
   },
   "extends": [
-    "plugin:node/recommended",
     "eslint:recommended",
     "airbnb",
     "plugin:prettier/recommended"
   ],
   "rules": {
+    "no-shadow": "off",
     "no-nested-ternary": "off",
     "no-underscore-dangle": "off",
     "no-console": "off",
@@ -45,18 +47,8 @@
         "tabWidth": 2
       }
     ],
-    "no-plusplus": "off"
-  },
-  "overrides": [
-    {
-      "files": "**/__tests__/*.js",
-      "rules": {
-        "max-len": 0,
-        "import/no-dynamic-require": 0,
-        "import/no-extraneous-dependencies": 0,
-        "node/no-unpublished-require": 0,
-        "node/no-missing-require": 0
-      }
-    }
-  ]
+    "no-plusplus": "off",
+    "react/jsx-wrap-multilines": "off",
+    "react/jsx-props-no-spreading": "warn"
+  }
 }
