@@ -44,6 +44,7 @@
   "watch": {
     "build": {
       "patterns": [
+        "public",
         "src"
       ],
       "extensions": "js,jsx"

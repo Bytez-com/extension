@@ -7,7 +7,6 @@ import {
   ListItemIcon,
   ListItemText,
   ListItemSecondaryAction,
-  Tooltip,
   Switch,
   Divider
 } from "@material-ui/core";
@@ -86,18 +85,5 @@ const useStyles = makeStyles(theme => ({
     width: "100%",
     minWidth: 360,
     backgroundColor: theme.palette.colors.surfaceGray
-  },
-  iframe: {
-    position: "fixed",
-    top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0,
-    width: "100%",
-    height: "100%",
-    border: "none",
-    margin: 0,
-    padding: 0,
-    zIndex: 999999
   }
 }));
