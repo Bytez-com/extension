@@ -1,6 +1,6 @@
 {
   "name": "bytez-chrome-extension",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Bytez chrome extension",
   "main": "src/index.js",
   "dependencies": {
@@ -24,7 +24,8 @@
     "npm-watch": "^0.7.0",
     "prettier": "^2.1.2",
     "react-scripts": "^3.4.3",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "zip-a-folder": "^0.0.12"
   },
   "scripts": {
     "lint": "eslint .",
@@ -32,7 +33,11 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "watch": "npm-watch"
+    "watch": "npm-watch",
+    "semantic": "node updateVersion.js -",
+    "patch": "npm run build && npm run semantic patch",
+    "minor": "npm run build && npm run semantic minor",
+    "major": "npm run build && npm run semantic major"
   },
   "browserslist": [
     ">0.2%",

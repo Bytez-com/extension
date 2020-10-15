@@ -24,7 +24,5 @@ chrome.webNavigation.onCreatedNavigationTarget.addListener(
 );
 
 chrome.storage.onChanged.addListener(({ settings_v1 }) => {
-  if (settings_v1 !== undefined) {
-    enabled = settings_v1.newValue.enabled;
-  }
+  enabled = settings_v1?.newValue?.enabled ?? true;
 });
