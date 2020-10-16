@@ -32,7 +32,9 @@ export default () => {
   //
   useEffect(() => {
     chrome.storage.sync.get("settings_v1", ({ settings_v1 }) => {
-      setState(settings_v1);
+      if (settings_v1) {
+        setState(settings_v1);
+      }
     });
   }, []);
   //

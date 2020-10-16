@@ -1,6 +1,6 @@
 {
   "name": "bytez-chrome-extension",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Bytez chrome extension",
   "main": "src/index.js",
   "dependencies": {
