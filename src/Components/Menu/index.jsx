@@ -44,7 +44,7 @@ export default () => {
         button
         component="a"
         target="_none"
-        href="https://bytez.com/app"
+        href="https://bytez.com/follow"
       >
         <ListItemIcon>
           <OpenBytezIcon />
