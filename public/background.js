@@ -55,9 +55,8 @@ async function syncSupportedPaperIDs() {
     if (alreadySyncing === false) {
       alreadySyncing = true;
 
-      const listOfPaperIDs = await fetch(
-        "https://api.bytez.com/papers"
-      ).then(res => res.json());
+      const response = await fetch("https://api.bytez.com/papers");
+      const listOfPaperIDs = await response.json();
       // reset the supported object
       whiteList = {};
       // set each paperID to true

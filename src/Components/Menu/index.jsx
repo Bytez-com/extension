@@ -2,7 +2,6 @@ import { useCallback, useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   List,
-  ListSubheader,
   ListItem,
   ListItemIcon,
   ListItemText,
@@ -21,17 +20,18 @@ export default () => {
   const [state, setState] = useState({ enabled: true });
   //
   const toggleSwitch = useCallback(() => {
+    // enable or disable the chrome extension
     setState(state => {
-      const enabled = !state.enabled;
+      const settings_v1 = { ...state, enabled: !state.enabled };
       // save this value across browsers
-      chrome.storage.sync.set({ settings_v1: { ...state, enabled } });
+      chrome.storage?.sync.set({ settings_v1 });
       // update the component state
-      return { ...state, enabled };
+      return settings_v1;
     });
   }, []);
   //
   useEffect(() => {
-    chrome.storage.sync.get("settings_v1", ({ settings_v1 }) => {
+    chrome.storage?.sync.get("settings_v1", ({ settings_v1 }) => {
       if (settings_v1) {
         setState(settings_v1);
       }
@@ -44,12 +44,12 @@ export default () => {
         button
         component="a"
         target="_none"
-        href="https://bytez.com/follow"
+        href="https://bytez.com/read/arxiv/1706.03762/tour"
       >
         <ListItemIcon>
           <OpenBytezIcon />
         </ListItemIcon>
-        <ListItemText primary="Launch Bytez" />
+        <ListItemText primary="Open tutorial" />
       </ListItem>
       <ListItem
         button
@@ -62,13 +62,12 @@ export default () => {
         </ListItemIcon>
         <ListItemText primary="View saved papers" />
       </ListItem>
-      <Divider />
-      <ListSubheader>SmartReader settings</ListSubheader>
+      <Divider variant="fullWidth" />
       <ListItem button onClick={toggleSwitch}>
         <ListItemIcon>
           <OnIcon />
         </ListItemIcon>
-        <ListItemText primary="Open - Arxiv ML papers" />
+        <ListItemText primary={state.enabled ? "Enabled" : "Disabled"} />
         <ListItemSecondaryAction>
           <Switch
             color="primary"
