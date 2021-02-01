@@ -30,7 +30,7 @@ chrome.webNavigation.onCreatedNavigationTarget.addListener(
   },
   { url: [{ hostContains: "arxiv.org", pathPrefix: "/pdf" }] }
 );
-
+// check if extension is enabled; if so, enable or disable sync
 chrome.storage.onChanged.addListener(async ({ settings_v1 }) => {
   try {
     extensionEnabled = settings_v1?.newValue?.enabled ?? true;
@@ -44,12 +44,15 @@ chrome.storage.onChanged.addListener(async ({ settings_v1 }) => {
     console.error(error);
   }
 });
+// is the arxiv paper ID white listed to be opened
 function checkIfWhiteListed(url) {
   if (extensionEnabled) {
     const [paperID] = extractPaperID(url);
+
     return whiteList[paperID] ? paperID : undefined;
   }
 }
+// only allow one sync to be active
 async function syncSupportedPaperIDs() {
   try {
     if (alreadySyncing === false) {
@@ -73,6 +76,15 @@ async function syncSupportedPaperIDs() {
     alreadySyncing = false;
   }
 }
-
 // download the supported paper IDs and resync every 8 hours
 syncSupportedPaperIDs();
+// check if this is the first time the user has installed the extension
+chrome.storage?.sync.get("onboarded", ({ onboarded }) => {
+  if (onboarded === undefined) {
+    chrome.tabs.create({ url: "https://bytez.com/welcome" });
+    chrome.storage?.sync.set({ onboarded: true });
+  }
+});
+chrome.runtime.onMessageExternal.addListener((request, sender, sendResponse) =>
+  sendResponse(true)
+);
