@@ -60,15 +60,17 @@ async function syncSupportedPaperIDs() {
 
       const response = await fetch("https://api.bytez.com/papers");
       const listOfPaperIDs = await response.json();
-      // reset the supported object
-      whiteList = {};
-      // set each paperID to true
-      for (const paperID of listOfPaperIDs) {
-        whiteList[paperID] = true;
+      if (listOfPaperIDs?.length > 0) {
+        // reset the supported object
+        whiteList = {};
+        // set each paperID to true
+        for (const paperID of listOfPaperIDs) {
+          whiteList[paperID] = true;
+        }
+        // enable a single re-sync in 8 hours
+        clearTimeout(timeoutID);
+        timeoutID = setTimeout(syncSupportedPaperIDs, 2.88e7);
       }
-      // enable a single re-sync in 8 hours
-      clearTimeout(timeoutID);
-      timeoutID = setTimeout(syncSupportedPaperIDs, 2.88e7);
     }
   } catch (error) {
     console.error(error);
