@@ -53,7 +53,7 @@ function checkIfWhiteListed(url) {
   }
 }
 // only allow one sync to be active
-async function syncSupportedPaperIDs() {
+async function syncSupportedPaperIDs(retry = true) {
   try {
     if (alreadySyncing === false) {
       alreadySyncing = true;
@@ -61,23 +61,28 @@ async function syncSupportedPaperIDs() {
       const response = await fetch("https://api.bytez.com/papers");
       const listOfPaperIDs = await response.json();
       if (listOfPaperIDs?.length > 0) {
-        // reset the supported object
-        whiteList = {};
-        // set each paperID to true
-        for (const paperID of listOfPaperIDs) {
-          whiteList[paperID] = true;
-        }
-        window.localStorage.setItem("whiteList", JSON.stringify(whiteList));
-        // enable a single re-sync in 8 hours
-        clearTimeout(timeoutID);
-        timeoutID = setTimeout(syncSupportedPaperIDs, 2.88e7);
+        setWhiteList(listOfPaperIDs);
+      } else if (retry === true) {
+        syncSupportedPaperIDs(false);
       }
     }
   } catch (error) {
     console.error(error);
   } finally {
     alreadySyncing = false;
+    // enable a single re-sync in 8 hours
+    clearTimeout(timeoutID);
+    timeoutID = setTimeout(syncSupportedPaperIDs, 2.88e7);
   }
+}
+function setWhiteList(listOfPaperIDs) {
+  // reset the supported object
+  whiteList = {};
+  // set each paperID to true
+  for (const paperID of listOfPaperIDs) {
+    whiteList[paperID] = true;
+  }
+  window.localStorage.setItem("whiteList", JSON.stringify(whiteList));
 }
 // download the supported paper IDs and resync every 8 hours
 syncSupportedPaperIDs();
