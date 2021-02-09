@@ -1,7 +1,7 @@
 const extractPaperID = / /.exec.bind(/(?!pdf\/)(\d+(?:\.\d+)?)[^v.]/);
 let extensionEnabled = true;
 let alreadySyncing = false;
-let whiteList = {};
+let whiteList = JSON.parse(window.localStorage.whiteList ?? "{}");
 let timeoutID;
 //
 //
@@ -67,6 +67,7 @@ async function syncSupportedPaperIDs() {
         for (const paperID of listOfPaperIDs) {
           whiteList[paperID] = true;
         }
+        window.localStorage.setItem("whiteList", JSON.stringify(whiteList));
         // enable a single re-sync in 8 hours
         clearTimeout(timeoutID);
         timeoutID = setTimeout(syncSupportedPaperIDs, 2.88e7);
