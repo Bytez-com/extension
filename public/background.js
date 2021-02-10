@@ -1,7 +1,7 @@
 const extractPaperID = / /.exec.bind(/(?!pdf\/)(\d+(?:\.\d+)?)[^v.]/);
 let extensionEnabled = true;
 let alreadySyncing = false;
-let whiteList = JSON.parse(window.localStorage.whiteList ?? "{}");
+let whiteList = {};
 let timeoutID;
 //
 //
@@ -49,7 +49,9 @@ function checkIfWhiteListed(url) {
   if (extensionEnabled) {
     const [paperID] = extractPaperID(url);
 
-    return whiteList[paperID] ? paperID : undefined;
+    if (whiteList[paperID]) {
+      return paperID;
+    }
   }
 }
 // only allow one sync to be active
@@ -60,9 +62,10 @@ async function syncSupportedPaperIDs(retry = true) {
 
       const response = await fetch("https://api.bytez.com/papers");
       const listOfPaperIDs = await response.json();
-      if (listOfPaperIDs?.length > 0) {
+
+      if (listOfPaperIDs?.length) {
         setWhiteList(listOfPaperIDs);
-      } else if (retry === true) {
+      } else if (retry) {
         syncSupportedPaperIDs(false);
       }
     }
@@ -75,14 +78,15 @@ async function syncSupportedPaperIDs(retry = true) {
     timeoutID = setTimeout(syncSupportedPaperIDs, 2.88e7);
   }
 }
-function setWhiteList(listOfPaperIDs) {
+function setWhiteList(listOfPaperIDs = []) {
   // reset the supported object
   whiteList = {};
   // set each paperID to true
   for (const paperID of listOfPaperIDs) {
     whiteList[paperID] = true;
   }
-  window.localStorage.setItem("whiteList", JSON.stringify(whiteList));
+  // cache the list of paper IDs
+  localStorage.listOfPaperIDs = JSON.stringify(listOfPaperIDs);
 }
 // download the supported paper IDs and resync every 8 hours
 syncSupportedPaperIDs();
@@ -95,4 +99,8 @@ chrome.storage?.sync.get("onboarded", ({ onboarded }) => {
 });
 chrome.runtime.onMessageExternal.addListener((request, sender, sendResponse) =>
   sendResponse(true)
+);
+// reload whitelist from cache
+setWhiteList(
+  localStorage.listOfPaperIDs && JSON.parse(localStorage.listOfPaperIDs)
 );
