@@ -11,7 +11,7 @@
     "react-dom": "^17.0.1"
   },
   "devDependencies": {
-    "eslint": "^7.19.0",
+    "eslint": "^7.21.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-import": "^2.22.1",
@@ -23,9 +23,10 @@
     "eslint-plugin-react-hooks": "^2.5.1",
     "npm-watch": "^0.7.0",
     "prettier": "^2.2.1",
-    "react-scripts": "^4.0.2",
+    "react-scripts": "^4.0.3",
     "typescript": "^3.9.9",
-    "zip-a-folder": "^0.0.12"
+    "zip-a-folder": "^0.0.12",
+    "node-fetch": "^2.6.1"
   },
   "scripts": {
     "lint": "eslint .",
@@ -33,11 +34,12 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
+    "whitelist": "node generateRules.js",
     "watch": "npm-watch",
     "semantic": "node updateVersion.js -",
-    "patch": "npm run build && npm run semantic patch",
-    "minor": "npm run build && npm run semantic minor",
-    "major": "npm run build && npm run semantic major"
+    "patch": "npm run whitelist && npm run build && npm run semantic patch",
+    "minor": "npm run whitelist && npm run build && npm run semantic minor",
+    "major": "npm run whitelist && npm run build && npm run semantic major"
   },
   "browserslist": [
     ">0.2%",
@@ -52,7 +54,7 @@
         "public",
         "src"
       ],
-      "extensions": "js,jsx"
+      "extensions": "js,jsx,json"
     }
   }
 }

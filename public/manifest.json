@@ -1,31 +1,24 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "author": "Bytez",
   "name": "Bytez",
-  "version": "1.1.4",
-  "icons": {
-    "750": "rocket-circle-purple.png"
-  },
-  "browser_action": {
-    "default_popup": "index.html",
-    "default_title": "Settings"
-  },
-  "content_security_policy": "script-src 'self' 'sha256-ZJ9u8JVQLISItj6/EnmybQShfdgxNCh1vBSmjgy+Nmk='; object-src 'self'",
+  "version": "2.0.0",
+  "icons": { "750": "rocket-circle-purple.png" },
+  "action": { "default_popup": "index.html", "default_title": "Settings" },
+  "background": { "service_worker": "background.js" },
   "externally_connectable": {
-    "matches": [
-      "https://bytez.com/*",
-      "http://localhost:3000/*"
+    "matches": ["https://bytez.com/*", "http://localhost:3000/*"]
+  },
+  "permissions": ["alarms", "declarativeNetRequest"],
+  "host_permissions": ["*://arxiv.org/pdf/*"],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "white_list",
+        "enabled": true,
+        "path": "rules.json"
+      }
     ]
   },
-  "permissions": [
-    "storage",
-    "tabs",
-    "webNavigation",
-    "webRequest",
-    "webRequestBlocking",
-    "*://arxiv.org/pdf/*"
-  ],
-  "background": {
-    "page": "background.html"
-  }
+  "web_accessible_resources": [{ "resources": ["rules.json"], "matches": [] }]
 }
