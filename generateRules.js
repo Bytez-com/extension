@@ -6,7 +6,7 @@ const {
 
 fetch("https://api.bytez.com/papers")
   .then(res => res.json())
-  .then(list => console.log(list.length) || list)
+  .then(list => console.log(list.length.toLocaleString()) || list)
   .then(list =>
     writeFile(
       `${__dirname}/public/rules.json`,

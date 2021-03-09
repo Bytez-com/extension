@@ -3,9 +3,16 @@
   "author": "Bytez",
   "name": "Bytez",
   "version": "2.0.0",
-  "icons": { "750": "rocket-circle-purple.png" },
-  "action": { "default_popup": "index.html", "default_title": "Settings" },
-  "background": { "service_worker": "background.js" },
+  "icons": {
+    "750": "rocket-circle-purple.png"
+  },
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "Settings"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
   "externally_connectable": {
     "matches": ["https://bytez.com/*", "http://localhost:3000/*"]
   },
@@ -20,5 +27,10 @@
       }
     ]
   },
-  "web_accessible_resources": [{ "resources": ["rules.json"], "matches": [] }]
+  "web_accessible_resources": [
+    {
+      "resources": ["rules.json"],
+      "matches": []
+    }
+  ]
 }
